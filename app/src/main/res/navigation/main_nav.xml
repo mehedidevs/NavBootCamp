@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/gameFragment">
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.mehedi.navbootcamp.StartFragment"
+        android:label="StartFragment" >
+        <action
+            android:id="@+id/action_startFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameOwnFragment"
+        android:name="com.mehedi.navbootcamp.GameWonFragment"
+        android:label="GameOwnFragment" />
+    <fragment
+        android:id="@+id/gameRulesFragment"
+        android:name="com.mehedi.navbootcamp.GameRulesFragment"
+        android:label="GameRulesFragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.mehedi.navbootcamp.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.mehedi.navbootcamp.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_gameFragment_to_gameOwnFragment"
+            app:destination="@id/gameOwnFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_gameOverFragment2"
+            app:destination="@id/gameOverFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameOverFragment2"
+        android:name="com.mehedi.navbootcamp.GameOverFragment"
+        android:label="fragment_game_over"
+        tools:layout="@layout/fragment_game_over" />
+</navigation>
