@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.mehedi.navbootcamp.databinding.FragmentGameWonBinding
 
 
 class GameWonFragment : Fragment() {
+
+    lateinit var binding: FragmentGameWonBinding
 
 
     override fun onCreateView(
@@ -15,7 +18,19 @@ class GameWonFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game_won, container, false)
+
+        binding = FragmentGameWonBinding.inflate(layoutInflater, container, false)
+
+        val score = GameWonFragmentArgs.fromBundle(requireArguments()).score
+        val numberOfQuestion = GameWonFragmentArgs.fromBundle(requireArguments()).numberOfQuestion
+
+        binding.apply {
+            txtScore.text = "Your Score is $score out of $numberOfQuestion questions"
+        }
+
+
+
+        return binding.root
     }
 
 

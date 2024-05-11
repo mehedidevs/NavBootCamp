@@ -75,8 +75,9 @@ class GameFragment : Fragment() {
     lateinit var currentQuestion: Question
     lateinit var answers: MutableList<String>
     private var questionIndex = 0
-
     private val numQuestions = ((questions.size + 1) / 2).coerceAtMost(3)
+
+    var score = 0
 
 
     override fun onCreateView(
@@ -108,17 +109,28 @@ class GameFragment : Fragment() {
                 }
                 // The first answer in the original question is always the correct one, so if our
                 // answer matches, we have the correct answer.
+
+
                 if (answers[answerIndex] == currentQuestion.answers[0]) {
                     questionIndex++
+                    score++
                     // Advance to the next question
                     if (questionIndex < numQuestions) {
                         currentQuestion = questions[questionIndex]
                         setQuestion()
+
                         binding.invalidateAll()
                     } else {
                         // We've won!  Navigate to the gameWonFragment.
 
-                        //  findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+                        //    findNavController().navigate(R.id.action_gameFragment_to_gameOwnFragment)
+                        findNavController().navigate(
+                            GameFragmentDirections.actionGameFragmentToGameOwnFragment(
+                                numQuestions,
+                                score
+                            )
+                        )
+
 
 //                        findNavController().navigate(
 //                            GameFragmentDirections.actionGameFragmentToGameWonFragment(questions.size)
@@ -152,7 +164,7 @@ class GameFragment : Fragment() {
         // randomize the answers into a copy of the array
         answers = currentQuestion.answers.toMutableList()
         // and shuffle them
-        answers.shuffle()
+        //  answers.shuffle()
         (activity as AppCompatActivity).supportActionBar?.title =
             getString(R.string.title_android_trivia_question, questionIndex + 1, numQuestions)
     }

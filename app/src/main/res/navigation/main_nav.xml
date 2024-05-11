@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/startFragment"
         android:name="com.mehedi.navbootcamp.StartFragment"
-        android:label="StartFragment" >
+        android:label="Start Game">
         <action
             android:id="@+id/action_startFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
@@ -15,21 +15,28 @@
     <fragment
         android:id="@+id/gameOwnFragment"
         android:name="com.mehedi.navbootcamp.GameWonFragment"
-        android:label="GameOwnFragment" />
+        android:label="Game Won">
+        <argument
+            android:name="numberOfQuestion"
+            app:argType="integer" />
+        <argument
+            android:name="score"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/gameRulesFragment"
         android:name="com.mehedi.navbootcamp.GameRulesFragment"
-        android:label="GameRulesFragment" />
+        android:label="Game Rules" />
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.mehedi.navbootcamp.AboutFragment"
-        android:label="fragment_about"
+        android:label="About Game"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.mehedi.navbootcamp.GameFragment"
-        android:label="fragment_game"
-        tools:layout="@layout/fragment_game" >
+        android:label="Game Play"
+        tools:layout="@layout/fragment_game">
         <action
             android:id="@+id/action_gameFragment_to_gameOwnFragment"
             app:destination="@id/gameOwnFragment" />
@@ -40,6 +47,6 @@
     <fragment
         android:id="@+id/gameOverFragment2"
         android:name="com.mehedi.navbootcamp.GameOverFragment"
-        android:label="fragment_game_over"
+        android:label="Game Over"
         tools:layout="@layout/fragment_game_over" />
 </navigation>
